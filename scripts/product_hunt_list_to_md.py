@@ -10,7 +10,7 @@ import pytz
 # load_dotenv()
 
 # 创建 OpenAI 客户端实例
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'), base_url = os.getenv('OPENAI_BASE_URL'))
 
 producthunt_client_id = os.getenv('PRODUCTHUNT_CLIENT_ID')
 producthunt_client_secret = os.getenv('PRODUCTHUNT_CLIENT_SECRET')
@@ -92,9 +92,9 @@ class Product:
         og_image_markdown = f"![{self.name}]({self.og_image_url})"
         return (
             f"## [{rank}. {self.name}]({self.url})\n"
-            f"**标语**：{self.translated_tagline}\n"
-            f"**介绍**：{self.translated_description}\n"
-            f"**产品网站**: [立即访问]({self.website})\n"
+            f"**标语**：{self.translated_tagline}\n\n"
+            f"**介绍**：{self.translated_description}\n\n"
+            f"**产品网站**: [立即访问]({self.website})\n\n"
             f"**Product Hunt**: [View on Product Hunt]({self.url})\n\n"
             f"{og_image_markdown}\n\n"
             f"**关键词**：{self.keyword}\n"
